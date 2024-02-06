@@ -22,7 +22,7 @@ window/size/fullscreen=true
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/CSGStairs/plugin.cfg", "res://addons/csg_mesher/plugin.cfg", "res://addons/linear_stairs/plugin.cfg")
 
 [gui]
 

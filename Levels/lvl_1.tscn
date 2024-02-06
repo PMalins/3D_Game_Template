@@ -14,6 +14,7 @@ height = 5.0
 [sub_resource type="SphereMesh" id="SphereMesh_3niy2"]
 radius = 3.0
 height = 6.0
+rings = 4
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2gvt3"]
 
