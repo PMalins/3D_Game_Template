@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://kix52bheo7yw"]
+[gd_scene load_steps=45 format=3 uid="uid://kix52bheo7yw"]
 
 [ext_resource type="PackedScene" uid="uid://b0q0bnia378s4" path="res://Scenes/Player.tscn" id="1_bma5q"]
 [ext_resource type="PackedScene" uid="uid://d4matnyr77nyi" path="res://Scenes/Components/tree_2.tscn" id="2_ipj8d"]
@@ -6,7 +6,14 @@
 [ext_resource type="Script" path="res://addons/linear_stairs/nodes/csg_linear_stairs.gd" id="4_c76ax"]
 [ext_resource type="Script" path="res://Scripts/Respawn Mesh.gd" id="5_tew7c"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qjlvw"]
+
+[sub_resource type="Sky" id="Sky_e3bxv"]
+sky_material = SubResource("ProceduralSkyMaterial_qjlvw")
+
 [sub_resource type="Environment" id="Environment_3n1mm"]
+background_mode = 2
+sky = SubResource("Sky_e3bxv")
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_gjc2f"]
 
