@@ -921,6 +921,7 @@ operation = 2
 size = Vector3(3, 7.67957, 17)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Beginning Ruins/Debris3"]
+transform = Transform3D(1, -4.14882e-10, 7.54874e-12, -4.46376e-12, 1, -2.07294e-09, -3.06702e-11, 2.50227e-08, 1, -0.000694275, 0.814687, -0.70404)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Beginning Ruins/Debris3/StaticBody3D"]
 transform = Transform3D(-0.680497, 0.60245, 0.417102, -0.588457, -0.110131, -0.800991, -0.436621, -0.79052, 0.42946, -3.97668, -4.81742, -10.3271)
