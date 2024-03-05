@@ -1,10 +1,11 @@
-[gd_scene load_steps=45 format=3 uid="uid://kix52bheo7yw"]
+[gd_scene load_steps=46 format=3 uid="uid://kix52bheo7yw"]
 
 [ext_resource type="PackedScene" uid="uid://b0q0bnia378s4" path="res://Scenes/Player.tscn" id="1_bma5q"]
 [ext_resource type="PackedScene" uid="uid://d4matnyr77nyi" path="res://Scenes/Components/tree_2.tscn" id="2_ipj8d"]
 [ext_resource type="Script" path="res://addons/csg_mesher/src/CSGMesher.gd" id="3_ku2hf"]
 [ext_resource type="Script" path="res://addons/linear_stairs/nodes/csg_linear_stairs.gd" id="4_c76ax"]
 [ext_resource type="Script" path="res://Scripts/Respawn Mesh.gd" id="5_tew7c"]
+[ext_resource type="PackedScene" uid="uid://bytubnrlv3562" path="res://Models/Strawberry.glb" id="6_thhmb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qjlvw"]
 
@@ -923,7 +924,7 @@ operation = 2
 size = Vector3(3, 11.6857, 17)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Beginning Ruins/Debris3/CSGMesher"]
-transform = Transform3D(-0.997944, -0.0630849, -0.0094296, -0.0128447, 0.34355, -0.939024, 0.0624785, -0.937005, -0.343657, -0.272499, -0.0886304, -12.9429)
+transform = Transform3D(-0.998699, -0.0432497, 0.0262788, -0.0395202, 0.342154, -0.93879, 0.0316114, -0.93864, -0.343422, -0.272556, -0.052012, -12.9005)
 operation = 2
 size = Vector3(3, 7.67957, 17)
 
@@ -937,3 +938,9 @@ mesh = SubResource("CylinderMesh_pcs4f")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Beginning Ruins/Debris3/StaticBody3D"]
 transform = Transform3D(-0.680592, 0.601987, 0.417618, -0.588801, -0.110191, -0.800731, -0.436012, -0.790866, 0.429446, -3.977, -4.817, -10.327)
 shape = SubResource("CylinderShape3D_xjkjw")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.35808, 0)
+
+[node name="Strawberry" parent="Area3D" instance=ExtResource("6_thhmb")]
+transform = Transform3D(0.691224, 0, 0, 0, 0.623921, 0, 0, 0, 0.693708, -0.673452, -3.63212, 0)
