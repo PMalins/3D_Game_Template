@@ -63,6 +63,9 @@ func _walk(delta: float) -> Vector3:
 	var walk_dir: Vector3 = Vector3(_forward.x, 0, _forward.z).normalized()
 	walk_vel = walk_vel.move_toward(walk_dir * speed * move_dir.length(), acceleration * delta)
 	return walk_vel
+	
+	if Input.is_action_pressed("sprint"): 
+		Vector3(1, 65, 1)
 
 func _gravity(delta: float) -> Vector3:
 	grav_vel = Vector3.ZERO if is_on_floor() else grav_vel.move_toward(Vector3(0, velocity.y - gravity, 0), gravity * delta)
@@ -75,3 +78,4 @@ func _jump(delta: float) -> Vector3:
 		return jump_vel
 	jump_vel = Vector3.ZERO if is_on_floor() else jump_vel.move_toward(Vector3.ZERO, gravity * delta)
 	return jump_vel
+
