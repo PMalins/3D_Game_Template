@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://kix52bheo7yw"]
+[gd_scene load_steps=54 format=3 uid="uid://kix52bheo7yw"]
 
 [ext_resource type="PackedScene" uid="uid://b0q0bnia378s4" path="res://Scenes/Player.tscn" id="1_bma5q"]
 [ext_resource type="PackedScene" uid="uid://d4matnyr77nyi" path="res://Scenes/Components/tree_2.tscn" id="2_ipj8d"]
@@ -107,8 +107,6 @@ size = Vector3(150, 25, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jrsym"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r16du"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8l436"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_liy17"]
 
@@ -792,7 +790,6 @@ transform = Transform3D(0.999999, -5.04672e-10, -5.75183e-11, 2.83222e-10, 0.999
 transform = Transform3D(0.999998, 0.000664225, -0.000724283, -4.05943e-05, 0.764292, 0.64487, 0.000981902, -0.644869, 0.764291, -2.78014, 4.75837, -4.1168)
 collision_layer = 8
 collision_mask = 5
-physics_material_override = SubResource("PhysicsMaterial_8l436")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Beginning Ruins/Rocks/Rock/RigidBody3D"]
 transform = Transform3D(1, -2.98498e-10, -1.67068e-11, -1.07005e-10, 1, 8.72582e-08, 2.17665e-10, -7.35549e-08, 1, 0, 0, 0)
