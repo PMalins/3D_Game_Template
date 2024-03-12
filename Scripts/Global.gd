@@ -1,4 +1,5 @@
 extends Node
 
-# Berry Counter
-var berry_count = 0
+# counter for apple collectible
+var apple_count = 0
+# reference with global.apple_count
