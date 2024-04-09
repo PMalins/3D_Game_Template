@@ -27,6 +27,6 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 shape = SubResource("BoxShape3D_kt8j0")
 
 [node name="Hand" type="Marker3D" parent="Camera"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 1, 0.324947, -0.979107, -1.61835)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 1, 0.212207, -0.788332, -1.53441)
 
 [connection signal="body_entered" from="Camera/Pickup Area" to="Camera/Pickup Area" method="_on_body_entered"]

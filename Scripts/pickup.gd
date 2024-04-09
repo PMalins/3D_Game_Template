@@ -3,7 +3,7 @@ extends Area3D
 @onready var hand = $"../Hand"
 @onready var camera = $".."
 
-var pull_speed = 2
+var pull_speed = 4
 var throw_speed = 8
 
 var pickup_object = null

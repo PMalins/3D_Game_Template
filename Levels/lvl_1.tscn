@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://kix52bheo7yw"]
+[gd_scene load_steps=53 format=3 uid="uid://kix52bheo7yw"]
 
 [ext_resource type="PackedScene" uid="uid://b0q0bnia378s4" path="res://Scenes/Player.tscn" id="1_bma5q"]
 [ext_resource type="PackedScene" uid="uid://d4matnyr77nyi" path="res://Scenes/Components/tree_2.tscn" id="2_ipj8d"]
@@ -27,7 +27,7 @@ size = Vector3(200, 1, 100)
 albedo_color = Color(0.756863, 0.54902, 0.266667, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_axmj6"]
-size = Vector3(200, 1, 35)
+size = Vector3(200, 1, 100)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vscgc"]
 
@@ -97,24 +97,16 @@ size = Vector3(0.25, 0.25, 0.25)
 size = Vector3(1000, 20, 1000)
 
 [sub_resource type="BoxMesh" id="BoxMesh_p0kyj"]
-size = Vector3(150, 25, 1)
+size = Vector3(185, 45, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8oi86"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dcht4"]
-size = Vector3(150, 25, 1)
+size = Vector3(185, 25, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jrsym"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r16du"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_liy17"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_nynrf"]
-radial_segments = 5
-rings = 4
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_fb8gk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3mura"]
 
@@ -142,6 +134,12 @@ size = Vector3(35, 1, 35)
 [sub_resource type="BoxShape3D" id="BoxShape3D_1jo70"]
 size = Vector3(35, 1, 35)
 
+[sub_resource type="SphereMesh" id="SphereMesh_goswu"]
+radial_segments = 5
+rings = 4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lgx66"]
+
 [node name="Lvl 2" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0, 2.08165e-12)
 metadata/_edit_lock_ = true
@@ -156,21 +154,22 @@ collision_mask = 15
 jump_height = 2.0
 
 [node name="Ground" type="Node3D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="Ground" type="StaticBody3D" parent="Ground"]
 transform = Transform3D(1, 0, 2.98487e-09, 0, 1, 0, 2.98487e-09, 0, 1, 7.34583, 0.0249805, -0.0308771)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground/Ground"]
-transform = Transform3D(1, -3.48787e-16, 4.44089e-16, 3.48787e-16, 1, -3.48787e-16, -4.44089e-16, 3.48787e-16, 1, 64.9792, 0, -1.93715e-07)
+transform = Transform3D(1, -3.48787e-16, 4.44089e-16, 3.48787e-16, 1, -3.48787e-16, -4.44089e-16, 3.48787e-16, 1, 64.9925, -4.76837e-07, 0.00783043)
 mesh = SubResource("BoxMesh_p4ety")
 surface_material_override/0 = SubResource("StandardMaterial3D_4uo1x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/Ground"]
-transform = Transform3D(1, -3.48787e-16, 4.44089e-16, 3.48787e-16, 1, -3.48787e-16, -4.44089e-16, 3.48787e-16, 1, 64.9214, 0, -1.86265e-07)
+transform = Transform3D(1, -3.48787e-16, 4.44089e-16, 3.48787e-16, 1, -3.48787e-16, -4.44089e-16, 3.48787e-16, 1, 64.9587, -3.8147e-06, 0.144016)
 shape = SubResource("BoxShape3D_axmj6")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.99724, 0.0429765, 0.0605454, 8.72014e-17, -0.815451, 0.578826, 0.0742477, -0.577228, -0.813201, 27.9551, 31.4125, 2.36108)
+transform = Transform3D(0.99724, 0.0429765, 0.0605454, 0.0316565, -0.983727, 0.176859, 0.0671609, -0.174454, -0.982372, 27.9551, 31.4125, -42.0858)
 light_energy = 1.089
 light_indirect_energy = 0.7
 shadow_enabled = true
@@ -338,9 +337,11 @@ stairs_width = 7.0
 
 [node name="Player Respawn Point" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 29.1044, -12.5021, 0.238306)
+metadata/_edit_lock_ = true
 
 [node name="Torches" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.831208, -0.555962, 0, 0.555962, 0.831208, -15.4084, -8.32119, -16.8503)
+metadata/_edit_lock_ = true
 
 [node name="Torch" type="Node3D" parent="Torches"]
 transform = Transform3D(1, 0, 0, 0, 1, -2.06908e-08, 0, 2.38632e-09, 1, -10.5096, 0, 0)
@@ -723,11 +724,11 @@ script = ExtResource("5_tew7c")
 respawn_point = NodePath("../Player Respawn Point")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Respawn Barrier"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -42.0785, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -38.6412, 0)
 shape = SubResource("BoxShape3D_frn56")
-metadata/_edit_lock_ = true
 
 [node name="AT Underground Walls" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.5561, 0)
 metadata/_edit_lock_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="AT Underground Walls"]
@@ -739,7 +740,7 @@ mesh = SubResource("BoxMesh_p0kyj")
 surface_material_override/0 = SubResource("StandardMaterial3D_8oi86")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AT Underground Walls/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.9556, 2.55896, 16.9041)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.9556, 12.6201, 16.9041)
 shape = SubResource("BoxShape3D_dcht4")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="AT Underground Walls"]
@@ -751,11 +752,12 @@ mesh = SubResource("BoxMesh_p0kyj")
 surface_material_override/0 = SubResource("StandardMaterial3D_jrsym")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AT Underground Walls/StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.9554, 2.55896, 16.9041)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.9554, 12.5588, 16.9041)
 shape = SubResource("BoxShape3D_dcht4")
 
 [node name="Beginning Ruins" type="Node3D" parent="."]
 transform = Transform3D(-0.999999, -0.00132289, -0.000546483, -0.000643533, 0.75662, -0.653857, 0.00127839, -0.653857, -0.756619, 129.696, 2.08165e-12, 2.08165e-12)
+metadata/_edit_lock_ = true
 
 [node name="Debris" type="Node3D" parent="Beginning Ruins"]
 transform = Transform3D(1, -3.81835e-12, -5.95103e-11, 2.38014e-11, 1, -2.75083e-08, -1.18105e-11, 4.50097e-08, 1, 0, 0, 0)
@@ -789,134 +791,6 @@ size = Vector3(3, 8.376, 13)
 transform = Transform3D(-0.483314, -0.720953, 0.496407, -0.855888, 0.2706, -0.440418, 0.183198, -0.637829, -0.747968, -3.00668, 0.278123, 15.3538)
 operation = 2
 size = Vector3(3, 8.376, 13)
-
-[node name="Rocks" type="Node3D" parent="Beginning Ruins"]
-transform = Transform3D(1, 3.21707e-11, -1.44161e-10, 5.96233e-11, 1, -7.33603e-08, -1.26685e-10, 1.33628e-07, 1, -0.0133209, 6.81503, 7.88613)
-
-[node name="Rock" type="Node3D" parent="Beginning Ruins/Rocks"]
-transform = Transform3D(0.999998, -2.13449e-09, -1.68733e-09, 1.00411e-09, 0.999999, -4.91312e-07, -1.83122e-10, 3.18491e-07, 0.999999, -5.31775, 5.45402, -4.72225)
-
-[node name="RigidBody3D" type="RigidBody3D" parent="Beginning Ruins/Rocks/Rock"]
-transform = Transform3D(0.999998, 0.000664225, -0.000724283, -4.05946e-05, 0.764292, 0.64487, 0.000981902, -0.644869, 0.764291, -0.0709991, 0.374372, -0.323645)
-collision_layer = 8
-collision_mask = 5
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Beginning Ruins/Rocks/Rock/RigidBody3D"]
-transform = Transform3D(1, -2.98498e-10, -1.67068e-11, -1.07005e-10, 1, 8.72582e-08, 2.17665e-10, -7.35549e-08, 1, 0, 0, 0)
-shape = SubResource("BoxShape3D_liy17")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Beginning Ruins/Rocks/Rock/RigidBody3D"]
-transform = Transform3D(1, -6.77998e-11, -4.85918e-11, 2.05393e-10, 1, 4.42453e-09, 1.26604e-10, -6.73847e-08, 1, 0, 0, 0)
-layers = 8
-mesh = SubResource("SphereMesh_nynrf")
-skeleton = NodePath("../..")
-
-[node name="Rock2" type="Node3D" parent="Beginning Ruins/Rocks"]
-transform = Transform3D(0.999998, -5.98318e-10, 3.02927e-10, 1.01288e-09, 0.999998, -1.47631e-06, -1.93524e-10, 1.06961e-06, 0.999998, 42.2853, 1.71352, 2.3509)
-
-[node name="RigidBody3D" type="RigidBody3D" parent="Beginning Ruins/Rocks/Rock2"]
-transform = Transform3D(0.999999, 8.61542e-11, -1.88598e-10, 3.72375e-11, 0.999999, -1.39844e-07, -2.41559e-10, 2.0695e-07, 0.999999, 9.81493, 1.44019, -1.228)
-disable_mode = 2
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Beginning Ruins/Rocks/Rock2/RigidBody3D"]
-transform = Transform3D(1, -2.13848e-10, 9.73567e-12, -6.22339e-11, 1, 4.37035e-08, 9.81679e-11, -8.64836e-08, 1, 0, 2.38419e-07, -1.19209e-07)
-mesh = SubResource("SphereMesh_nynrf")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Beginning Ruins/Rocks/Rock2/RigidBody3D"]
-transform = Transform3D(1, -2.98498e-10, -1.67068e-11, -1.07005e-10, 1, 8.72582e-08, 2.17665e-10, -7.35549e-08, 1, 0, 0, 0)
-shape = SubResource("SphereShape3D_fb8gk")
-
-[node name="Rock3" type="Node3D" parent="Beginning Ruins/Rocks"]
-transform = Transform3D(0.999999, -2.22629e-10, 1.44102e-10, 4.53175e-10, 0.999999, -7.70212e-07, -1.35417e-12, 5.20235e-07, 0.999999, 8.54056, -10.0143, -12.321)
-
-[node name="RigidBody3D" type="RigidBody3D" parent="Beginning Ruins/Rocks/Rock3"]
-transform = Transform3D(0.999999, 8.61542e-11, -1.88598e-10, 3.72375e-11, 0.999999, -1.39844e-07, -2.41559e-10, 2.0695e-07, 0.999999, 9.81493, 1.44019, -1.228)
-disable_mode = 2
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Beginning Ruins/Rocks/Rock3/RigidBody3D"]
-transform = Transform3D(1, -2.13848e-10, 9.73567e-12, -6.22339e-11, 1, 4.37035e-08, 9.81679e-11, -8.64836e-08, 1, 0, 2.38419e-07, -1.19209e-07)
-mesh = SubResource("SphereMesh_nynrf")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Beginning Ruins/Rocks/Rock3/RigidBody3D"]
-transform = Transform3D(1, -2.98498e-10, -1.67068e-11, -1.07005e-10, 1, 8.72582e-08, 2.17665e-10, -7.35549e-08, 1, 0, 0, 0)
-shape = SubResource("SphereShape3D_fb8gk")
-
-[node name="Rock4" type="Node3D" parent="Beginning Ruins/Rocks"]
-transform = Transform3D(0.999999, -3.2105e-10, 1.17659e-10, 5.65116e-10, 0.999999, -9.05471e-07, -8.63543e-11, 6.83753e-07, 0.999999, 26.2728, 0.700549, -0.370067)
-
-[node name="RigidBody3D" type="RigidBody3D" parent="Beginning Ruins/Rocks/Rock4"]
-transform = Transform3D(0.999999, 8.61542e-11, -1.88598e-10, 3.72375e-11, 0.999999, -1.39844e-07, -2.41559e-10, 2.0695e-07, 0.999999, 9.81493, 1.44019, -1.228)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Beginning Ruins/Rocks/Rock4/RigidBody3D"]
-transform = Transform3D(1, -2.13848e-10, 9.73567e-12, -6.22339e-11, 1, 4.37035e-08, 9.81679e-11, -8.64836e-08, 1, 0, 2.38419e-07, -1.19209e-07)
-mesh = SubResource("SphereMesh_nynrf")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Beginning Ruins/Rocks/Rock4/RigidBody3D"]
-transform = Transform3D(1, -2.98498e-10, -1.67068e-11, -1.07005e-10, 1, 8.72582e-08, 2.17665e-10, -7.35549e-08, 1, 0, 0, 0)
-shape = SubResource("SphereShape3D_fb8gk")
-
-[node name="Rock5" type="Node3D" parent="Beginning Ruins/Rocks"]
-transform = Transform3D(0.999999, -2.80837e-10, 1.30331e-10, 3.41235e-10, 0.999999, -6.14321e-07, 2.54383e-11, 3.71223e-07, 0.999999, 40.8386, -13.335, -16.4827)
-
-[node name="RigidBody3D" type="RigidBody3D" parent="Beginning Ruins/Rocks/Rock5"]
-transform = Transform3D(0.999999, 8.61542e-11, -1.88598e-10, 3.72375e-11, 0.999999, -1.39844e-07, -2.41559e-10, 2.0695e-07, 0.999999, 9.81493, 1.44019, -1.228)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Beginning Ruins/Rocks/Rock5/RigidBody3D"]
-transform = Transform3D(1, -2.13848e-10, 9.73567e-12, -6.22339e-11, 1, 4.37035e-08, 9.81679e-11, -8.64836e-08, 1, 0, 2.38419e-07, -1.19209e-07)
-mesh = SubResource("SphereMesh_nynrf")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Beginning Ruins/Rocks/Rock5/RigidBody3D"]
-transform = Transform3D(1, -2.98498e-10, -1.67068e-11, -1.07005e-10, 1, 8.72582e-08, 2.17665e-10, -7.35549e-08, 1, 0, 0, 0)
-shape = SubResource("SphereShape3D_fb8gk")
-
-[node name="Rock6" type="Node3D" parent="Beginning Ruins/Rocks"]
-transform = Transform3D(0.999999, -3.2105e-10, 1.17659e-10, 5.65116e-10, 0.999999, -9.05471e-07, -8.63543e-11, 6.83753e-07, 0.999999, 58.8217, -2.37427, -3.13391)
-
-[node name="RigidBody3D" type="RigidBody3D" parent="Beginning Ruins/Rocks/Rock6"]
-transform = Transform3D(0.999999, 8.61542e-11, -1.88598e-10, 3.72375e-11, 0.999999, -1.39844e-07, -2.41559e-10, 2.0695e-07, 0.999999, 9.81493, 1.44019, -1.228)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Beginning Ruins/Rocks/Rock6/RigidBody3D"]
-transform = Transform3D(1, -2.13848e-10, 9.73567e-12, -6.22339e-11, 1, 4.37035e-08, 9.81679e-11, -8.64836e-08, 1, 0, 2.38419e-07, -1.19209e-07)
-mesh = SubResource("SphereMesh_nynrf")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Beginning Ruins/Rocks/Rock6/RigidBody3D"]
-transform = Transform3D(1, -2.98498e-10, -1.67068e-11, -1.07005e-10, 1, 8.72582e-08, 2.17665e-10, -7.35549e-08, 1, 0, 0, 0)
-shape = SubResource("SphereShape3D_fb8gk")
-
-[node name="Rock7" type="Node3D" parent="Beginning Ruins/Rocks"]
-transform = Transform3D(0.999999, -3.2105e-10, 1.17659e-10, 5.65116e-10, 0.999999, -9.05471e-07, -8.63543e-11, 6.83753e-07, 0.999999, 24.7925, -8.15722, -8.97641)
-
-[node name="RigidBody3D" type="RigidBody3D" parent="Beginning Ruins/Rocks/Rock7"]
-transform = Transform3D(0.999999, 8.61542e-11, -1.88598e-10, 3.72375e-11, 0.999999, -1.39844e-07, -2.41559e-10, 2.0695e-07, 0.999999, 9.81493, 1.44019, -1.228)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Beginning Ruins/Rocks/Rock7/RigidBody3D"]
-transform = Transform3D(1, -2.13848e-10, 9.73567e-12, -6.22339e-11, 1, 4.37035e-08, 9.81679e-11, -8.64836e-08, 1, 0, 2.38419e-07, -1.19209e-07)
-mesh = SubResource("SphereMesh_nynrf")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Beginning Ruins/Rocks/Rock7/RigidBody3D"]
-transform = Transform3D(1, -2.98498e-10, -1.67068e-11, -1.07005e-10, 1, 8.72582e-08, 2.17665e-10, -7.35549e-08, 1, 0, 0, 0)
-shape = SubResource("SphereShape3D_fb8gk")
-
-[node name="Rock8" type="Node3D" parent="Beginning Ruins/Rocks"]
-transform = Transform3D(0.999999, -3.2105e-10, 1.17659e-10, 5.65116e-10, 0.999999, -9.05471e-07, -8.63543e-11, 6.83753e-07, 0.999999, 66.1279, -9.41172, -10.1042)
-
-[node name="RigidBody3D" type="RigidBody3D" parent="Beginning Ruins/Rocks/Rock8"]
-transform = Transform3D(0.999999, 8.61542e-11, -1.88598e-10, 3.72375e-11, 0.999999, -1.39844e-07, -2.41559e-10, 2.0695e-07, 0.999999, 9.81493, 1.44019, -1.228)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Beginning Ruins/Rocks/Rock8/RigidBody3D"]
-transform = Transform3D(1, -2.13848e-10, 9.73567e-12, -6.22339e-11, 1, 4.37035e-08, 9.81679e-11, -8.64836e-08, 1, 0, 2.38419e-07, -1.19209e-07)
-mesh = SubResource("SphereMesh_nynrf")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Beginning Ruins/Rocks/Rock8/RigidBody3D"]
-transform = Transform3D(1, -2.98498e-10, -1.67068e-11, -1.07005e-10, 1, 8.72582e-08, 2.17665e-10, -7.35549e-08, 1, 0, 0, 0)
-shape = SubResource("SphereShape3D_fb8gk")
 
 [node name="Debris2" type="Node3D" parent="Beginning Ruins"]
 transform = Transform3D(0.999999, 8.61542e-11, -1.88598e-10, 3.72375e-11, 0.999999, -1.39844e-07, -2.41559e-10, 2.0695e-07, 0.999999, 39.6814, 0.0524903, 0.0216851)
@@ -977,6 +851,7 @@ shape = SubResource("CylinderShape3D_xjkjw")
 
 [node name="Platforms" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.4052, -11.6976, -10.2933)
+metadata/_edit_lock_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Platforms"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 4.96933, -2.27283, 0)
@@ -1101,6 +976,7 @@ shape = SubResource("BoxShape3D_o7hic")
 [node name="Collectables" type="Node3D" parent="."]
 transform = Transform3D(0.691224, 0, 0, 0, 0.623921, 0, 0, 0, 0.693708, -0.673452, 0.725955, 0)
 script = ExtResource("6_2nhny")
+metadata/_edit_lock_ = true
 
 [node name="Berry" type="Area3D" parent="Collectables"]
 transform = Transform3D(1.44671, 0, 0, 0, 1.60277, 0, 0, 0, 1.44153, 84.9521, -12.5334, 8.47331)
@@ -1139,7 +1015,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.69702, 0)
 shape = SubResource("SphereShape3D_mwnmw")
 
 [node name="Final Platform" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.692, -16.2306, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.566, -16.2306, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Final Platform"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 46.7424, -16.4202, 3.40872)
@@ -1152,6 +1028,112 @@ skeleton = NodePath("../../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Final Platform/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -34.0792, 17.103, -3.40872)
 shape = SubResource("BoxShape3D_1jo70")
+
+[node name="Rocks (FR)" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 149.478, 4.40491, 0)
+metadata/_edit_lock_ = true
+
+[node name="Rock1" type="RigidBody3D" parent="Rocks (FR)"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.67064, -3.25107, 0)
+collision_layer = 16
+collision_mask = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rocks (FR)/Rock1"]
+mesh = SubResource("SphereMesh_goswu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks (FR)/Rock1"]
+shape = SubResource("SphereShape3D_lgx66")
+
+[node name="Rock2" type="RigidBody3D" parent="Rocks (FR)"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.4532, -3.449, -5.81537)
+collision_layer = 16
+collision_mask = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rocks (FR)/Rock2"]
+mesh = SubResource("SphereMesh_goswu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks (FR)/Rock2"]
+shape = SubResource("SphereShape3D_lgx66")
+
+[node name="Rock3" type="RigidBody3D" parent="Rocks (FR)"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.2458, -3.36544, 10.5168)
+collision_layer = 16
+collision_mask = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rocks (FR)/Rock3"]
+mesh = SubResource("SphereMesh_goswu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks (FR)/Rock3"]
+shape = SubResource("SphereShape3D_lgx66")
+
+[node name="Rock4" type="RigidBody3D" parent="Rocks (FR)"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5031, -3.36055, -4.29435)
+collision_layer = 16
+collision_mask = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rocks (FR)/Rock4"]
+mesh = SubResource("SphereMesh_goswu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks (FR)/Rock4"]
+shape = SubResource("SphereShape3D_lgx66")
+
+[node name="Rock5" type="RigidBody3D" parent="Rocks (FR)"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.2636, -3.2411, 5.69649)
+collision_layer = 16
+collision_mask = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rocks (FR)/Rock5"]
+mesh = SubResource("SphereMesh_goswu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks (FR)/Rock5"]
+shape = SubResource("SphereShape3D_lgx66")
+
+[node name="Rock6" type="RigidBody3D" parent="Rocks (FR)"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.445, -3.4887, -10.6658)
+collision_layer = 16
+collision_mask = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rocks (FR)/Rock6"]
+mesh = SubResource("SphereMesh_goswu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks (FR)/Rock6"]
+shape = SubResource("SphereShape3D_lgx66")
+
+[node name="Rock7" type="RigidBody3D" parent="Rocks (FR)"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -137.341, -3.15571, 2.95756)
+collision_layer = 16
+collision_mask = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rocks (FR)/Rock7"]
+mesh = SubResource("SphereMesh_goswu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks (FR)/Rock7"]
+shape = SubResource("SphereShape3D_lgx66")
+
+[node name="Rock8" type="RigidBody3D" parent="Rocks (FR)"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2838, -17.9327, -7.61702)
+collision_layer = 16
+collision_mask = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rocks (FR)/Rock8"]
+mesh = SubResource("SphereMesh_goswu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks (FR)/Rock8"]
+shape = SubResource("SphereShape3D_lgx66")
+
+[node name="Rock9" type="RigidBody3D" parent="Rocks (FR)"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1747, -2.71814, 10.6961)
+collision_layer = 16
+collision_mask = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rocks (FR)/Rock9"]
+mesh = SubResource("SphereMesh_goswu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocks (FR)/Rock9"]
+shape = SubResource("SphereShape3D_lgx66")
+
+[node name="Extra Temple Walls" type="Node3D" parent="."]
+transform = Transform3D(1.19249e-08, -3.48787e-16, -1, 3.48787e-16, 1, -3.48787e-16, 1, -3.48787e-16, 1.19249e-08, 130.246, -29.7189, 9.57807)
 
 [connection signal="body_entered" from="Respawn Barrier" to="Respawn Barrier" method="_on_body_entered"]
 [connection signal="body_entered" from="Collectables/Berry" to="Collectables/Berry" method="_on_body_entered"]
