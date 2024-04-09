@@ -23,7 +23,7 @@ var walk_vel: Vector3 # Walking velocity
 var grav_vel: Vector3 # Gravity velocity 
 var jump_vel: Vector3 # Jumping velocity
 
-var jump_num = 2
+var jump_max = 2
 var jump_count = 0
 
 @onready var camera: Camera3D = $Camera
@@ -42,6 +42,9 @@ func _physics_process(delta: float) -> void:
 	if mouse_captured: _handle_joypad_camera_rotation(delta)
 	velocity = _walk(delta) + _gravity(delta) + _jump(delta)
 	move_and_slide()
+	
+	if is_on_floor() and jump_count!=0:
+		jump_count = 0
 
 func capture_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -68,7 +71,7 @@ func _walk(delta: float) -> Vector3:
 	var walk_dir: Vector3 = Vector3(_forward.x, 0, _forward.z).normalized()
 	walk_vel = walk_vel.move_toward(walk_dir * speed * move_dir.length(), acceleration * delta)
 	if Input.is_action_pressed("sprint"): 
-		walk_vel = walk_vel.move_toward(2 * walk_dir * speed * move_dir.length(), acceleration * delta) * 1.1
+		walk_vel = walk_vel.move_toward(2 * walk_dir * speed * move_dir.length(), acceleration * delta) * 1.015
 	return walk_vel
 
 # FUCK YEAAAAAH SPRINTING WORKS don't mess with it future me I will cry.
@@ -78,17 +81,21 @@ func _gravity(delta: float) -> Vector3:
 	return grav_vel
 
 func _jump(delta: float) -> Vector3:
-	if jumping and jump_num>jump_count:
-		if is_on_floor(): jump_vel = Vector3(0, sqrt(4 * jump_height * gravity), 0)
+	if jumping:
+		if jump_count<jump_max: jump_vel = Vector3(0, sqrt(4 * jump_height * gravity), 0)
 		jumping = false
+		if jump_count<jump_max and not is_on_floor(): jump_vel = Vector3(0, sqrt(4 * jump_height * gravity), 0) * 1.2
+		jumping = false
+		jump_count += 1
 		return jump_vel
 	jump_vel = Vector3.ZERO if is_on_floor() else jump_vel.move_toward(Vector3.ZERO, gravity * delta)
-	jump_num += 1
-	if jumping and jump_num>jump_count:
-		if not is_on_floor() and jump_num>jump_count: jump_vel = Vector3(0, sqrt(4 * jump_height * gravity), 0)
-		jump_vel = Vector3.ZERO if not is_on_floor() or jump_num<jump_count else jump_vel.move_toward(Vector3.ZERO, gravity * delta)
 	return jump_vel
 	
+	if is_on_floor() and jump_count!=0:
+		jump_count = 0
+	
+	
+	#OH MY GOD I DID IT I DID IT HOLY SHIT
 	
 	
 	
