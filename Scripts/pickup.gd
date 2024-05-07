@@ -57,7 +57,7 @@ func _on_body_entered(body):
 		return
 	pickup_object = body
 	
-func _unhandled_key_input(event):
+func _unhandled_key_input(_event):
 	if Input.is_action_just_pressed("pickup"):
 		if pickup_Hook:
 			Has_Hook = true
