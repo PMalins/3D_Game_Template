@@ -6,6 +6,9 @@ extends Area3D
 var pull_speed = 4
 var throw_speed = 8
 
+var pickup_Hook = null
+var Has_Hook = false
+
 var pickup_object = null
 var is_picked = false
 
@@ -53,3 +56,9 @@ func _on_body_entered(body):
 		# if so, end function here
 		return
 	pickup_object = body
+	
+func _unhandled_key_input(event):
+	if Input.is_action_just_pressed("pickup"):
+		if pickup_Hook:
+			Has_Hook = true
+		
