@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dvivqpqpvmvj6"]
+[gd_scene load_steps=31 format=3 uid="uid://dvivqpqpvmvj6"]
 
 [ext_resource type="Script" path="res://Scripts/global.gd" id="1_vlrs7"]
 [ext_resource type="Script" path="res://Scripts/collectible.gd" id="2_hbesu"]
@@ -22,6 +22,9 @@ background_mode = 2
 sky = SubResource("Sky_e3bxv")
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ew4th"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0dpug"]
+size = Vector3(1000, 20, 1000)
 
 [sub_resource type="BoxMesh" id="BoxMesh_g5yyb"]
 size = Vector3(175, 1, 15)
@@ -47,13 +50,28 @@ size = Vector3(2, 1, 5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_5nhc1"]
 size = Vector3(2, 1, 5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jq5ya"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_rcanj"]
 size = Vector3(2, 1, 9)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jq5ya"]
+[sub_resource type="BoxMesh" id="BoxMesh_tye4f"]
+size = Vector3(0.25, 1, 0.25)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0dpug"]
-size = Vector3(1000, 20, 1000)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ax32"]
+albedo_color = Color(0.392157, 0.231373, 0.054902, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4o2h6"]
+size = Vector3(0.25, 1, 0.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y2jg6"]
+size = Vector3(0.25, 0.25, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3p6cw"]
+albedo_color = Color(0.960784, 0.733333, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bkx68"]
+size = Vector3(0.25, 0.25, 0.25)
 
 [node name="Lvl 2" type="Node3D"]
 
@@ -109,6 +127,15 @@ jump_height = 2.0
 
 [node name="Player Respawn Point" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48788e-16, 1, -3.48788e-16, -1, 3.48787e-16, -4.37114e-08, 96.201, 2.6292, 0.767362)
+
+[node name="Respawn Barrier" type="Area3D" parent="." node_paths=PackedStringArray("respawn_point")]
+transform = Transform3D(1, 0, 0, 0, 1, -1.12238e-23, 0, -1.12238e-23, 1, 26.3375, -4.19648, 0.529056)
+script = ExtResource("7_dm7sr")
+respawn_point = NodePath("../Player Respawn Point")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Respawn Barrier"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -38.6412, 0)
+shape = SubResource("BoxShape3D_0dpug")
 
 [node name="Hallway Ground" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.749, 0, 0)
@@ -199,10 +226,6 @@ shape = SubResource("BoxShape3D_5nhc1")
 [node name="Starshot" parent="Grapple Hook (W_I_P)" instance=ExtResource("6_dtbel")]
 transform = Transform3D(0.5, 0, 0, 0, 0.491295, -0.0928933, 0, 0.0928933, 0.491295, 99.0457, -5.47508, 13.0733)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Grapple Hook (W_I_P)/Starshot"]
-transform = Transform3D(1, 0, 0, 0, 1, -4.90734e-08, 0, 5.42357e-08, 1, 0, 1.79123, 3.93188)
-shape = SubResource("BoxShape3D_rcanj")
-
 [node name="Grapple Tutorial" type="Node3D" parent="."]
 
 [node name="CSGMesher" type="CSGCombiner3D" parent="Grapple Tutorial"]
@@ -260,17 +283,391 @@ surface_material_override/0 = SubResource("StandardMaterial3D_lhuno")
 transform = Transform3D(1, -3.48787e-16, 4.44089e-16, 3.48787e-16, 1, -3.48787e-16, -4.44089e-16, 3.48787e-16, 1, 64.9587, -3.8147e-06, 0.144016)
 shape = SubResource("BoxShape3D_5rrgh")
 
-[node name="Respawn Barrier" type="Area3D" parent="." node_paths=PackedStringArray("respawn_point")]
-transform = Transform3D(1, 0, 0, 0, 1, -1.12238e-23, 0, -1.12238e-23, 1, 26.3375, -4.19648, 0.529056)
-script = ExtResource("7_dm7sr")
-respawn_point = NodePath("../Player Respawn Point")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grapple Tutorial"]
+transform = Transform3D(0.5, 0, 0, 0, 0.491295, -0.0928934, 0, 0.0928934, 0.491295, 155.874, 2.5678, 0.25507)
+shape = SubResource("BoxShape3D_rcanj")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Respawn Barrier"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -38.6412, 0)
-shape = SubResource("BoxShape3D_0dpug")
+[node name="Torches" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.831208, -0.555962, 0, 0.555962, 0.831208, -15.4084, -8.32119, -16.8503)
+metadata/_edit_lock_ = true
+
+[node name="Torch" type="Node3D" parent="Torches"]
+transform = Transform3D(1, 0, 0, 0, 1, 3.28947e-08, 0, -3.06976e-08, 1, -10.5096, 0, 0)
+
+[node name="Base" type="StaticBody3D" parent="Torches/Torch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1977, 0.539282, 0.127375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Torches/Torch/Base"]
+mesh = SubResource("BoxMesh_tye4f")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ax32")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Torches/Torch/Base"]
+shape = SubResource("BoxShape3D_4o2h6")
+
+[node name="Fire" type="StaticBody3D" parent="Torches/Torch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1977, 0.539282, 0.127375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Torches/Torch/Fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61892, 0)
+mesh = SubResource("BoxMesh_y2jg6")
+surface_material_override/0 = SubResource("StandardMaterial3D_3p6cw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Torches/Torch/Fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61892, 0)
+shape = SubResource("BoxShape3D_bkx68")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Torches/Torch/Fire"]
+transform = Transform3D(0.997241, 0.0429585, 0.0605387, -1.71099e-05, -0.815402, 0.578894, 0.0742319, -0.577298, -0.813152, 0.0103416, 0.601563, 0.214639)
+light_color = Color(0.905882, 0.745098, 0.266667, 1)
+omni_range = 18.533
+
+[node name="Torch2" type="Node3D" parent="Torches"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.06908e-08, 0, 2.38632e-09, 1, 23.1484, 0, 0)
+
+[node name="Base" type="StaticBody3D" parent="Torches/Torch2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1977, 0.539282, 0.127375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Torches/Torch2/Base"]
+mesh = SubResource("BoxMesh_tye4f")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ax32")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Torches/Torch2/Base"]
+shape = SubResource("BoxShape3D_4o2h6")
+
+[node name="Fire" type="StaticBody3D" parent="Torches/Torch2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1977, 0.539282, 0.127375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Torches/Torch2/Fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61892, 0)
+mesh = SubResource("BoxMesh_y2jg6")
+surface_material_override/0 = SubResource("StandardMaterial3D_3p6cw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Torches/Torch2/Fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61892, 0)
+shape = SubResource("BoxShape3D_bkx68")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Torches/Torch2/Fire"]
+transform = Transform3D(0.997241, 0.0429585, 0.0605387, -1.71099e-05, -0.815402, 0.578894, 0.0742319, -0.577298, -0.813152, 0.0103416, 0.601563, 0.214639)
+light_color = Color(0.905882, 0.745098, 0.266667, 1)
+omni_range = 18.533
+
+[node name="Torch3" type="Node3D" parent="Torches"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.06908e-08, 0, 2.38632e-09, 1, 54.12, 0, 0)
+
+[node name="Base" type="StaticBody3D" parent="Torches/Torch3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1977, 0.539282, 0.127375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Torches/Torch3/Base"]
+mesh = SubResource("BoxMesh_tye4f")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ax32")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Torches/Torch3/Base"]
+shape = SubResource("BoxShape3D_4o2h6")
+
+[node name="Fire" type="StaticBody3D" parent="Torches/Torch3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1977, 0.539282, 0.127375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Torches/Torch3/Fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61892, 0)
+mesh = SubResource("BoxMesh_y2jg6")
+surface_material_override/0 = SubResource("StandardMaterial3D_3p6cw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Torches/Torch3/Fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61892, 0)
+shape = SubResource("BoxShape3D_bkx68")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Torches/Torch3/Fire"]
+transform = Transform3D(0.997241, 0.0429585, 0.0605387, -1.71099e-05, -0.815402, 0.578894, 0.0742319, -0.577298, -0.813152, 0.0103416, 0.601563, 0.214639)
+light_color = Color(0.905882, 0.745098, 0.266667, 1)
+omni_range = 18.533
+
+[node name="Torch4" type="Node3D" parent="Torches"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.06908e-08, 0, 2.38632e-09, 1, 79.2256, 0, 0)
+
+[node name="Base" type="StaticBody3D" parent="Torches/Torch4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1977, 0.539282, 0.127375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Torches/Torch4/Base"]
+mesh = SubResource("BoxMesh_tye4f")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ax32")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Torches/Torch4/Base"]
+shape = SubResource("BoxShape3D_4o2h6")
+
+[node name="Fire" type="StaticBody3D" parent="Torches/Torch4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1977, 0.539282, 0.127375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Torches/Torch4/Fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61892, 0)
+mesh = SubResource("BoxMesh_y2jg6")
+surface_material_override/0 = SubResource("StandardMaterial3D_3p6cw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Torches/Torch4/Fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61892, 0)
+shape = SubResource("BoxShape3D_bkx68")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Torches/Torch4/Fire"]
+transform = Transform3D(0.997241, 0.0429585, 0.0605387, -1.71099e-05, -0.815402, 0.578894, 0.0742319, -0.577298, -0.813152, 0.0103416, 0.601563, 0.214639)
+light_color = Color(0.905882, 0.745098, 0.266667, 1)
+omni_range = 18.533
+
+[node name="Torch5" type="Node3D" parent="Torches"]
+transform = Transform3D(1, 0, 0, 0, 1, 3.28947e-08, 0, -3.06976e-08, 1, 170.145, 16.818, -0.307582)
+
+[node name="Base" type="StaticBody3D" parent="Torches/Torch5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1977, 0.539282, 0.127375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Torches/Torch5/Base"]
+mesh = SubResource("BoxMesh_tye4f")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ax32")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Torches/Torch5/Base"]
+shape = SubResource("BoxShape3D_4o2h6")
+
+[node name="Fire" type="StaticBody3D" parent="Torches/Torch5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1977, 0.539282, 0.127375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Torches/Torch5/Fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61892, 0)
+mesh = SubResource("BoxMesh_y2jg6")
+surface_material_override/0 = SubResource("StandardMaterial3D_3p6cw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Torches/Torch5/Fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61892, 0)
+shape = SubResource("BoxShape3D_bkx68")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Torches/Torch5/Fire"]
+transform = Transform3D(0.997241, 0.0429585, 0.0605387, -1.71099e-05, -0.815402, 0.578894, 0.0742319, -0.577298, -0.813152, 0.0103416, 0.601563, 0.214639)
+light_color = Color(0.905882, 0.745098, 0.266667, 1)
+omni_range = 18.533
+
+[node name="Torch6" type="Node3D" parent="Torches"]
+transform = Transform3D(1, 0, 0, 0, 1, 3.28947e-08, 0, -3.06976e-08, 1, 211.024, 17.0371, -0.431045)
+
+[node name="Base" type="StaticBody3D" parent="Torches/Torch6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1977, 0.539282, 0.127375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Torches/Torch6/Base"]
+mesh = SubResource("BoxMesh_tye4f")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ax32")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Torches/Torch6/Base"]
+shape = SubResource("BoxShape3D_4o2h6")
+
+[node name="Fire" type="StaticBody3D" parent="Torches/Torch6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1977, 0.539282, 0.127375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Torches/Torch6/Fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61892, 0)
+mesh = SubResource("BoxMesh_y2jg6")
+surface_material_override/0 = SubResource("StandardMaterial3D_3p6cw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Torches/Torch6/Fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61892, 0)
+shape = SubResource("BoxShape3D_bkx68")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Torches/Torch6/Fire"]
+transform = Transform3D(0.997241, 0.0429585, 0.0605387, -1.71099e-05, -0.815402, 0.578894, 0.0742319, -0.577298, -0.813152, 0.0103416, 0.601563, 0.214639)
+light_color = Color(0.905882, 0.745098, 0.266667, 1)
+omni_range = 18.533
+
+[node name="Torches" type="Node3D" parent="Torches"]
+transform = Transform3D(-0.999999, -0.00132289, -0.000546483, 0.000175829, 0.265389, -0.964142, 0.00142039, -0.964143, -0.265388, 114.898, 18.9557, 27.4348)
+
+[node name="Torch" type="Node3D" parent="Torches/Torches"]
+transform = Transform3D(0.999999, 1.64986e-09, 1.49615e-10, 1.38516e-09, 0.999998, -3.44673e-07, 1.3026e-09, 5.06169e-09, 0.999998, -143.617, 16.1172, -2.46987)
+
+[node name="Base" type="StaticBody3D" parent="Torches/Torches/Torch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1977, 0.539282, 0.127375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Torches/Torches/Torch/Base"]
+mesh = SubResource("BoxMesh_tye4f")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ax32")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Torches/Torches/Torch/Base"]
+shape = SubResource("BoxShape3D_4o2h6")
+
+[node name="Fire" type="StaticBody3D" parent="Torches/Torches/Torch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1977, 0.539282, 0.127375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Torches/Torches/Torch/Fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61892, 0)
+mesh = SubResource("BoxMesh_y2jg6")
+surface_material_override/0 = SubResource("StandardMaterial3D_3p6cw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Torches/Torches/Torch/Fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61892, 0)
+shape = SubResource("BoxShape3D_bkx68")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Torches/Torches/Torch/Fire"]
+transform = Transform3D(0.997241, 0.0429585, 0.0605387, -1.71099e-05, -0.815402, 0.578894, 0.0742319, -0.577298, -0.813152, 0.0103416, 0.601563, 0.214639)
+light_color = Color(0.905882, 0.745098, 0.266667, 1)
+omni_range = 18.533
+
+[node name="Torch2" type="Node3D" parent="Torches/Torches"]
+transform = Transform3D(0.999999, 1.15666e-09, -2.18784e-11, 8.03069e-10, 0.999999, -1.97947e-07, 7.97819e-10, -2.1585e-08, 0.999999, 144.928, 16.1883, -2.09531)
+
+[node name="Base" type="StaticBody3D" parent="Torches/Torches/Torch2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1977, 0.539282, 0.127375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Torches/Torches/Torch2/Base"]
+mesh = SubResource("BoxMesh_tye4f")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ax32")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Torches/Torches/Torch2/Base"]
+shape = SubResource("BoxShape3D_4o2h6")
+
+[node name="Fire" type="StaticBody3D" parent="Torches/Torches/Torch2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1977, 0.539282, 0.127375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Torches/Torches/Torch2/Fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61892, 0)
+mesh = SubResource("BoxMesh_y2jg6")
+surface_material_override/0 = SubResource("StandardMaterial3D_3p6cw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Torches/Torches/Torch2/Fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61892, 0)
+shape = SubResource("BoxShape3D_bkx68")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Torches/Torches/Torch2/Fire"]
+transform = Transform3D(0.997241, 0.0429585, 0.0605387, -1.71099e-05, -0.815402, 0.578894, 0.0742319, -0.577298, -0.813152, 0.0103416, 0.601563, 0.214639)
+light_color = Color(0.905882, 0.745098, 0.266667, 1)
+omni_range = 18.533
+
+[node name="Torch3" type="Node3D" parent="Torches/Torches"]
+transform = Transform3D(0.999999, 1.42125e-09, 9.98568e-11, 1.12098e-09, 0.999999, -2.89651e-07, 1.09502e-09, -3.84584e-08, 0.999998, -57.6588, 16.131, -2.29455)
+
+[node name="Base" type="StaticBody3D" parent="Torches/Torches/Torch3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1977, 0.539282, 0.127375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Torches/Torches/Torch3/Base"]
+mesh = SubResource("BoxMesh_tye4f")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ax32")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Torches/Torches/Torch3/Base"]
+shape = SubResource("BoxShape3D_4o2h6")
+
+[node name="Fire" type="StaticBody3D" parent="Torches/Torches/Torch3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1977, 0.539282, 0.127375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Torches/Torches/Torch3/Fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61892, 0)
+mesh = SubResource("BoxMesh_y2jg6")
+surface_material_override/0 = SubResource("StandardMaterial3D_3p6cw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Torches/Torches/Torch3/Fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61892, 0)
+shape = SubResource("BoxShape3D_bkx68")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Torches/Torches/Torch3/Fire"]
+transform = Transform3D(0.997241, 0.0429585, 0.0605387, -1.71099e-05, -0.815402, 0.578894, 0.0742319, -0.577298, -0.813152, 0.0103416, 0.601563, 0.214639)
+light_color = Color(0.905882, 0.745098, 0.266667, 1)
+omni_range = 18.533
+
+[node name="Torch4" type="Node3D" parent="Torches/Torches"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.06908e-08, 0, 2.38632e-09, 1, 79.2256, 0, 0)
+
+[node name="Base" type="StaticBody3D" parent="Torches/Torches/Torch4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1977, 0.539282, 0.127375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Torches/Torches/Torch4/Base"]
+mesh = SubResource("BoxMesh_tye4f")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ax32")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Torches/Torches/Torch4/Base"]
+shape = SubResource("BoxShape3D_4o2h6")
+
+[node name="Fire" type="StaticBody3D" parent="Torches/Torches/Torch4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1977, 0.539282, 0.127375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Torches/Torches/Torch4/Fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61892, 0)
+mesh = SubResource("BoxMesh_y2jg6")
+surface_material_override/0 = SubResource("StandardMaterial3D_3p6cw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Torches/Torches/Torch4/Fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61892, 0)
+shape = SubResource("BoxShape3D_bkx68")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Torches/Torches/Torch4/Fire"]
+transform = Transform3D(0.997241, 0.0429585, 0.0605387, -1.71099e-05, -0.815402, 0.578894, 0.0742319, -0.577298, -0.813152, 0.0103416, 0.601563, 0.214639)
+light_color = Color(0.905882, 0.745098, 0.266667, 1)
+omni_range = 18.533
+
+[node name="Torch5" type="Node3D" parent="Torches/Torches"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.06908e-08, 0, 2.38632e-09, 1, 100.158, 0, 0)
+
+[node name="Base" type="StaticBody3D" parent="Torches/Torches/Torch5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1977, 0.539282, 0.127375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Torches/Torches/Torch5/Base"]
+mesh = SubResource("BoxMesh_tye4f")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ax32")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Torches/Torches/Torch5/Base"]
+shape = SubResource("BoxShape3D_4o2h6")
+
+[node name="Fire" type="StaticBody3D" parent="Torches/Torches/Torch5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1977, 0.539282, 0.127375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Torches/Torches/Torch5/Fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61892, 0)
+mesh = SubResource("BoxMesh_y2jg6")
+surface_material_override/0 = SubResource("StandardMaterial3D_3p6cw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Torches/Torches/Torch5/Fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61892, 0)
+shape = SubResource("BoxShape3D_bkx68")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Torches/Torches/Torch5/Fire"]
+transform = Transform3D(0.997241, 0.0429585, 0.0605387, -1.71099e-05, -0.815402, 0.578894, 0.0742319, -0.577298, -0.813152, 0.0103416, 0.601563, 0.214639)
+light_color = Color(0.905882, 0.745098, 0.266667, 1)
+omni_range = 18.533
+
+[node name="Torch6" type="Node3D" parent="Torches/Torches"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.06908e-08, 0, 2.38632e-09, 1, 121.626, 0, 0)
+
+[node name="Base" type="StaticBody3D" parent="Torches/Torches/Torch6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1977, 0.539282, 0.127375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Torches/Torches/Torch6/Base"]
+mesh = SubResource("BoxMesh_tye4f")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ax32")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Torches/Torches/Torch6/Base"]
+shape = SubResource("BoxShape3D_4o2h6")
+
+[node name="Fire" type="StaticBody3D" parent="Torches/Torches/Torch6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1977, 0.539282, 0.127375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Torches/Torches/Torch6/Fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61892, 0)
+mesh = SubResource("BoxMesh_y2jg6")
+surface_material_override/0 = SubResource("StandardMaterial3D_3p6cw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Torches/Torches/Torch6/Fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61892, 0)
+shape = SubResource("BoxShape3D_bkx68")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Torches/Torches/Torch6/Fire"]
+transform = Transform3D(0.997241, 0.0429585, 0.0605387, -1.71099e-05, -0.815402, 0.578894, 0.0742319, -0.577298, -0.813152, 0.0103416, 0.601563, 0.214639)
+light_color = Color(0.905882, 0.745098, 0.266667, 1)
+omni_range = 18.533
 
 [connection signal="body_entered" from="Collectables/Berry" to="Collectables/Berry" method="_on_body_entered"]
 [connection signal="body_entered" from="Collectables/Berry2" to="Collectables/Berry2" method="_on_body_entered"]
 [connection signal="body_entered" from="Collectables/Berry3" to="Collectables/Berry3" method="_on_body_entered"]
-[connection signal="area_entered" from="Next Level Area" to="Next Level Area" method="_on_area_entered"]
 [connection signal="body_entered" from="Respawn Barrier" to="Respawn Barrier" method="_on_body_entered"]
+[connection signal="area_entered" from="Next Level Area" to="Next Level Area" method="_on_area_entered"]
