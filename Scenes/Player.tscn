@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0q0bnia378s4"]
+[gd_scene load_steps=6 format=3 uid="uid://b0q0bnia378s4"]
 
 [ext_resource type="Script" path="res://Scripts/FirstPersonController.gd" id="1_qtton"]
 [ext_resource type="Script" path="res://Scripts/pickup.gd" id="2_upldi"]
+[ext_resource type="PackedScene" uid="uid://cu47jtmat4svg" path="res://Grapple.tscn" id="3_jmvma"]
 
 [sub_resource type="CapsuleShape3D" id="2"]
 
@@ -29,5 +30,13 @@ shape = SubResource("BoxShape3D_kt8j0")
 
 [node name="Hand" type="Marker3D" parent="Camera"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 1, 0.212207, -0.788332, -1.53441)
+
+[node name="Grapple" parent="Camera" instance=ExtResource("3_jmvma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.565731, -0.516498, 4.86533)
+
+[node name="RayCast2" type="RayCast3D" parent="Camera/Grapple"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.88061e-07, 0.192823, -5.58277)
+target_position = Vector3(0, -1, -60)
+collision_mask = 4
 
 [connection signal="body_entered" from="Camera/Pickup Area" to="Camera/Pickup Area" method="_on_body_entered"]

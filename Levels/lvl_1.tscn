@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://addons/linear_stairs/nodes/csg_linear_stairs.gd" id="4_c76ax"]
 [ext_resource type="Script" path="res://Scripts/Respawn Mesh.gd" id="5_tew7c"]
 [ext_resource type="Script" path="res://Scripts/global.gd" id="6_2nhny"]
-[ext_resource type="PackedScene" uid="uid://bytubnrlv3562" path="res://Models/Strawberry.glb" id="6_thhmb"]
+[ext_resource type="PackedScene" uid="uid://b46gnhqmbnydt" path="res://Models/Strawberry.glb" id="6_thhmb"]
 [ext_resource type="Script" path="res://Scripts/collectible.gd" id="7_sirq3"]
 [ext_resource type="Script" path="res://Scripts/Next Level Area.gd" id="9_8mh0d"]
 
@@ -1021,8 +1021,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.69702, 0)
 shape = SubResource("SphereShape3D_mwnmw")
 
 [node name="Berry3" type="Area3D" parent="Collectables"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -43.9587, -17.4419, 4.41069)
-collision_layer = 2
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -43.9587, -14.4101, 4.41069)
+collision_layer = 0
 script = ExtResource("7_sirq3")
 
 [node name="Strawberry" parent="Collectables/Berry3" instance=ExtResource("6_thhmb")]

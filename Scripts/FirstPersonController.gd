@@ -13,8 +13,9 @@ class_name Player extends CharacterBody3D
 
 var jumping: bool = false
 var mouse_captured: bool = false
+var has_hook = false
 
-var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+@onready var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var move_dir: Vector2 # Input direction for movement
 var look_dir: Vector2 # Input direction for look/aim
@@ -45,6 +46,7 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_floor() and jump_count!=0:
 		jump_count = 0
+	
 
 func capture_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -98,4 +100,5 @@ func _jump(delta: float) -> Vector3:
 	#OH MY GOD I DID IT I DID IT HOLY SHIT
 	
 	
-	
+	#GRAPPLE CODE PLEASE WORK
+

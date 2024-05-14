@@ -8,11 +8,13 @@ var gpoint_distance = 0
 @onready var player = get_parent().get_parent().get_parent().get_parent()
 @onready var line = $glapple/Line
 @onready var grapple = $glapple
-@onready var hook = $glapple/Star
+@onready var hook = $glapple/Hook
 @onready var lookpoint = $Lookpoint
 
 func _ready() -> void:
 	pass
+
+#add time spent grappling to lerp, to counter for overchared negative gravity
 
 func _grapple():
 	if Input.is_action_just_pressed("fire"):
@@ -32,7 +34,7 @@ func _grapple():
 		if grapple_point.distance_to(player.transform.origin) > 1:
 			player.transform.origin = lerp(player.transform.origin, grapple_point, 0.005)
 		if player.translation.y > grapple_point.y + 3:
-			player.gravity = 5
+			player.gravity = 9.8
 	else:
 		grapple.look_at(Vector3(lookpoint.global_transform.origin.x, lookpoint.global_transform.origin.y, lookpoint.global_transform.origin.z), Vector3(0,1,0))
 		player.gravity = 9.8
@@ -42,11 +44,9 @@ func _grapple():
 		if grappling:
 			player.gravity_vec = Vector3.UP * player.jump
 			grappling = false
-
+	if player.current_weapon != 7:
+		grappling = false
 
 func find_point():
 	grapple_point = grapplecast.get_collision_point()
-	
-	
-func _physics_process(_delta):
-	_grapple()
+

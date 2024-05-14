@@ -7,7 +7,7 @@ var pull_speed = 4
 var throw_speed = 8
 
 var pickup_Hook = null
-var Has_Hook = false
+var has_hook = false
 
 var pickup_object = null
 var is_picked = false
@@ -60,5 +60,5 @@ func _on_body_entered(body):
 func _unhandled_key_input(_event):
 	if Input.is_action_just_pressed("pickup"):
 		if pickup_Hook:
-			Has_Hook = true
+			has_hook = true
 		
