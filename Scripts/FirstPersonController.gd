@@ -23,11 +23,15 @@ var look_dir: Vector2 # Input direction for look/aim
 var walk_vel: Vector3 # Walking velocity 
 var grav_vel: Vector3 # Gravity velocity 
 var jump_vel: Vector3 # Jumping velocity
+var translation: Vector3
+var jump: Vector3
+var gravity_vec: Vector3
 
 var jump_max = 2
 var jump_count = 0
 
 @onready var camera: Camera3D = $Camera
+
 
 func _ready() -> void:
 	capture_mouse()
@@ -93,8 +97,7 @@ func _jump(delta: float) -> Vector3:
 	jump_vel = Vector3.ZERO if is_on_floor() else jump_vel.move_toward(Vector3.ZERO, gravity * delta)
 	return jump_vel
 	
-	if is_on_floor() and jump_count!=0:
-		jump_count = 0
+
 	
 	
 	#OH MY GOD I DID IT I DID IT HOLY SHIT

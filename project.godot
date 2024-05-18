@@ -22,7 +22,6 @@ global="*res://Scripts/global.gd"
 [display]
 
 window/size/resizable=false
-window/dpi/allow_hidpi=false
 window/size/fullscreen=true
 window/layer_8=""
 
@@ -120,12 +119,13 @@ fire={
 
 3d_physics/layer_1="Player"
 3d_physics/layer_2="Collectables"
-3d_physics/layer_3="Ground"
+3d_physics/layer_3="Grapple Points"
 3d_physics/layer_4="Rocks"
 3d_physics/layer_5="Pickable"
 3d_physics/layer_6="PickupDetector"
 3d_physics/layer_7="Next Level"
 3d_physics/layer_8="Grappler"
+3d_physics/layer_9="Wall Collision"
 
 [physics]
 
