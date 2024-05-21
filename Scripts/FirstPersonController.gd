@@ -13,8 +13,9 @@ class_name Player extends CharacterBody3D
 
 var jumping: bool = false
 var mouse_captured: bool = false
+var has_hook = false
 
-var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+@onready var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var move_dir: Vector2 # Input direction for movement
 var look_dir: Vector2 # Input direction for look/aim
@@ -22,11 +23,16 @@ var look_dir: Vector2 # Input direction for look/aim
 var walk_vel: Vector3 # Walking velocity 
 var grav_vel: Vector3 # Gravity velocity 
 var jump_vel: Vector3 # Jumping velocity
+var translation: Vector3
+var jump: Vector3
+var gravity_vec: Vector3
 
 var jump_max = 2
 var jump_count = 0
 
 @onready var camera: Camera3D = $Camera
+@onready var Grapple = $Camera/Grapple
+
 
 func _ready() -> void:
 	capture_mouse()
@@ -45,6 +51,7 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_floor() and jump_count!=0:
 		jump_count = 0
+	
 
 func capture_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -91,11 +98,10 @@ func _jump(delta: float) -> Vector3:
 	jump_vel = Vector3.ZERO if is_on_floor() else jump_vel.move_toward(Vector3.ZERO, gravity * delta)
 	return jump_vel
 	
-	if is_on_floor() and jump_count!=0:
-		jump_count = 0
 	
 	
 	#OH MY GOD I DID IT I DID IT HOLY SHIT
 	
 	
-	
+	#GRAPPLE CODE PLEASE WORK
+
