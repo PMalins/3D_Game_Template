@@ -51,4 +51,13 @@ func grappel():
 func find_point():
 	grapple_point = grapplecast.get_collision_point()
 
+func _on_visibility_changed():
+	if global.has_Starshot == false:
+		grapple.visible = false 
+		line.visible = false 
+		hook.visible = false 
+	else:
+		grapple.visible = true
+		line.visible = true
+		hook.visible = true
 

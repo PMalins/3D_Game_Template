@@ -1,9 +1,15 @@
 extends Area3D
 
+@export var type = "Berry"
 var is_collected = false
-var Grapple_Ability = false
+signal item_collected
 
 func _on_body_entered(_body):
-	global.berry_count = global.berry_count + 1 
-	print("Berry Count", global.berry_count)
+	if type == "Berry":
+		global.berry_count = global.berry_count + 1 
+		print("Berry Count", global.berry_count)
+	
+	if type == "Starshot":
+		global.has_Starshot = true
+	emit_signal("item_collected")
 	queue_free() #berry collected

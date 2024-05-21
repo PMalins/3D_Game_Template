@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://kix52bheo7yw"]
+[gd_scene load_steps=59 format=3 uid="uid://kix52bheo7yw"]
 
 [ext_resource type="PackedScene" uid="uid://b0q0bnia378s4" path="res://Scenes/Player.tscn" id="1_bma5q"]
 [ext_resource type="PackedScene" uid="uid://d4matnyr77nyi" path="res://Scenes/Components/tree_2.tscn" id="2_ipj8d"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://b46gnhqmbnydt" path="res://Models/Strawberry.glb" id="6_thhmb"]
 [ext_resource type="Script" path="res://Scripts/collectible.gd" id="7_sirq3"]
 [ext_resource type="Script" path="res://Scripts/Next Level Area.gd" id="9_8mh0d"]
+[ext_resource type="PackedScene" uid="uid://t103t8pq6yln" path="res://UI/hud.tscn" id="10_7h331"]
+[ext_resource type="Script" path="res://UI/hud.gd" id="11_vtk7a"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qjlvw"]
 
@@ -160,7 +162,7 @@ camera_attributes = SubResource("CameraAttributesPractical_gjc2f")
 
 [node name="Player" parent="." instance=ExtResource("1_bma5q")]
 transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 168.47, 2.05475, 0)
-collision_mask = 15
+collision_mask = 271
 jump_height = 2.0
 
 [node name="Ground" type="Node3D" parent="."]
@@ -168,7 +170,7 @@ metadata/_edit_lock_ = true
 
 [node name="Ground" type="StaticBody3D" parent="Ground"]
 transform = Transform3D(1, 0, 2.98487e-09, 0, 1, 0, 2.98487e-09, 0, 1, 7.34583, 0.0249805, -0.0308771)
-collision_layer = 4
+collision_layer = 256
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground/Ground"]
 transform = Transform3D(1, -3.48787e-16, 4.44089e-16, 3.48787e-16, 1, -3.48787e-16, -4.44089e-16, 3.48787e-16, 1, 64.9925, -4.76837e-07, 0.00783043)
@@ -239,7 +241,7 @@ metadata/_edit_lock_ = true
 [node name="CSGMesher" type="CSGCombiner3D" parent="Arch"]
 transform = Transform3D(1, -1.04108e-24, 0, 1.04108e-24, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 use_collision = true
-collision_layer = 4
+collision_layer = 256
 script = ExtResource("3_ku2hf")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Arch/CSGMesher"]
@@ -259,6 +261,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.767181, 0)
 metadata/_edit_lock_ = true
 
 [node name="Pyramid" type="StaticBody3D" parent="Astral Temple Pyramid"]
+collision_layer = 256
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Astral Temple Pyramid/Pyramid"]
 transform = Transform3D(0.707107, 1.60554e-24, 0.707107, 3.48787e-16, 1, -3.48787e-16, -0.707107, 4.93259e-16, 0.707107, -20.178, 5.891, 2.08165e-12)
@@ -271,6 +274,7 @@ transform = Transform3D(0.707107, 1.60554e-24, 0.707107, 3.48787e-16, 1, -3.4878
 shape = SubResource("ConcavePolygonShape3D_wupv5")
 
 [node name="Base" type="StaticBody3D" parent="Astral Temple Pyramid"]
+collision_layer = 256
 
 [node name="Base" type="MeshInstance3D" parent="Astral Temple Pyramid/Base"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1784, 1.48197, 0)
@@ -288,6 +292,7 @@ metadata/_edit_lock_ = true
 
 [node name="Back Wall" type="StaticBody3D" parent="Astral Temple Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.589817, -0.0838695, -0.066576)
+collision_layer = 256
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Astral Temple Walls/Back Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00279617, -7.4147, -0.00861359)
@@ -300,6 +305,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_rutna")
 
 [node name="Side Walls" type="StaticBody3D" parent="Astral Temple Walls"]
 transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 18.285, -7.4838, -17.1163)
+collision_layer = 256
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Astral Temple Walls/Side Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 1.12238e-23, 0, 1.12238e-23, 1, 0, 0, 0.351)
@@ -313,6 +319,7 @@ shape = SubResource("BoxShape3D_q1rs8")
 
 [node name="Side Walls2" type="StaticBody3D" parent="Astral Temple Walls"]
 transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 18.2906, -7.49552, 16.9042)
+collision_layer = 256
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Astral Temple Walls/Side Walls2"]
 transform = Transform3D(1, 0, 0, 0, 1, 1.12238e-23, 0, 1.12238e-23, 1, 0, 0, 0.351)
@@ -329,6 +336,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -14.49, 2.08165e
 metadata/_edit_lock_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Astral Temple Inside"]
+collision_layer = 256
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Astral Temple Inside/StaticBody3D"]
 mesh = SubResource("BoxMesh_uamt0")
@@ -343,7 +351,7 @@ metadata/_edit_lock_ = true
 
 [node name="CSGLinearStairs" type="CSGCombiner3D" parent="Stairs"]
 use_collision = true
-collision_layer = 4
+collision_layer = 256
 script = ExtResource("4_c76ax")
 stairs_amount = 100
 stairs_width = 7.0
@@ -745,7 +753,7 @@ metadata/_edit_lock_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="AT Underground Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.97956, 0)
-collision_layer = 4
+collision_layer = 256
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="AT Underground Walls/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.9477, 2.55896, 16.9041)
@@ -758,7 +766,7 @@ shape = SubResource("BoxShape3D_dcht4")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="AT Underground Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.9156, -9.97956, -34.0117)
-collision_layer = 4
+collision_layer = 256
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="AT Underground Walls/StaticBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.9554, 2.55896, 16.9041)
@@ -779,7 +787,7 @@ transform = Transform3D(1, -3.81835e-12, -5.95103e-11, 2.38014e-11, 1, -2.75083e
 [node name="CSGMesher" type="CSGCombiner3D" parent="Beginning Ruins/Debris"]
 transform = Transform3D(1, -4.40315e-11, -6.37344e-11, 4.17124e-11, 1, -5.50195e-08, -9.83516e-11, 5.95164e-08, 1, -0.00283813, 3.34369, -2.88957)
 use_collision = true
-collision_layer = 4
+collision_layer = 256
 script = ExtResource("3_ku2hf")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Beginning Ruins/Debris/CSGMesher"]
@@ -813,7 +821,7 @@ transform = Transform3D(0.999999, 8.61542e-11, -1.88598e-10, 3.72375e-11, 0.9999
 [node name="CSGMesher" type="CSGCombiner3D" parent="Beginning Ruins/Debris2"]
 transform = Transform3D(1, -4.40315e-11, -6.37344e-11, 4.17124e-11, 1, -5.50195e-08, -9.83516e-11, 5.95164e-08, 1, -0.00283813, 3.34369, -2.88957)
 use_collision = true
-collision_layer = 4
+collision_layer = 256
 script = ExtResource("3_ku2hf")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Beginning Ruins/Debris2/CSGMesher"]
@@ -837,7 +845,7 @@ transform = Transform3D(0.999999, 7.31802e-11, -1.87703e-10, 1.48975e-10, 0.9999
 [node name="CSGMesher" type="CSGCombiner3D" parent="Beginning Ruins/Debris3"]
 transform = Transform3D(1, -4.40315e-11, -6.37344e-11, 4.17124e-11, 1, -5.50195e-08, -9.83516e-11, 5.95164e-08, 1, -0.00283813, 3.34369, -2.88957)
 use_collision = true
-collision_layer = 4
+collision_layer = 256
 script = ExtResource("3_ku2hf")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Beginning Ruins/Debris3/CSGMesher"]
@@ -857,7 +865,7 @@ size = Vector3(3, 7.67957, 17)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Beginning Ruins/Debris3"]
 transform = Transform3D(1, -7.23748e-10, -1.28402e-10, -8.07408e-11, 1, 3.76888e-08, -1.35201e-10, -1.09047e-08, 1, 0.000164032, -0.191652, 0.165623)
-collision_layer = 4
+collision_layer = 256
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Beginning Ruins/Debris3/StaticBody3D"]
 transform = Transform3D(-0.680497, 0.60245, 0.417102, -0.588457, -0.110131, -0.800991, -0.436621, -0.79052, 0.42946, -3.97668, -4.81742, -10.3271)
@@ -873,6 +881,7 @@ metadata/_edit_lock_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Platforms"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 4.96933, -2.27283, 0)
+collision_layer = 256
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 2.08165e-12, 2.08165e-12, 2.08165e-12)
@@ -885,6 +894,7 @@ shape = SubResource("BoxShape3D_o7hic")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Platforms"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 51.2173, -3.69713, 25.5833)
+collision_layer = 256
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StaticBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, 0, 0)
@@ -897,6 +907,7 @@ shape = SubResource("BoxShape3D_o7hic")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="Platforms"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 44.2697, -4.72254, 13.702)
+collision_layer = 256
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StaticBody3D3"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 2.08165e-12, 2.08165e-12, 2.08165e-12)
@@ -909,6 +920,7 @@ shape = SubResource("BoxShape3D_o7hic")
 
 [node name="StaticBody3D4" type="StaticBody3D" parent="Platforms"]
 transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 34.1092, 0.965183, 20.0634)
+collision_layer = 256
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StaticBody3D4"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 2.08165e-12, 2.08165e-12, 2.08165e-12)
@@ -921,6 +933,7 @@ shape = SubResource("BoxShape3D_o7hic")
 
 [node name="StaticBody3D5" type="StaticBody3D" parent="Platforms"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 28.1763, -2.98414, 0.264763)
+collision_layer = 256
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StaticBody3D5"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 2.08165e-12, 2.08165e-12, 2.08165e-12)
@@ -933,6 +946,7 @@ shape = SubResource("BoxShape3D_o7hic")
 
 [node name="StaticBody3D6" type="StaticBody3D" parent="Platforms"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 20.5948, -0.107873, 16.1106)
+collision_layer = 256
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StaticBody3D6"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 2.08165e-12, 2.08165e-12, 2.08165e-12)
@@ -945,6 +959,7 @@ shape = SubResource("BoxShape3D_o7hic")
 
 [node name="StaticBody3D7" type="StaticBody3D" parent="Platforms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6602, 0, 0)
+collision_layer = 256
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StaticBody3D7"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 2.08165e-12, 2.08165e-12, 2.08165e-12)
@@ -957,6 +972,7 @@ shape = SubResource("BoxShape3D_o7hic")
 
 [node name="StaticBody3D8" type="StaticBody3D" parent="Platforms"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 37.3843, -0.945207, 0.883322)
+collision_layer = 256
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StaticBody3D8"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 2.08165e-12, 2.08165e-12, 2.08165e-12)
@@ -969,6 +985,7 @@ shape = SubResource("BoxShape3D_o7hic")
 
 [node name="StaticBody3D9" type="StaticBody3D" parent="Platforms"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 11.7305, -1.70496, 9.72715)
+collision_layer = 256
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StaticBody3D9"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 2.08165e-12, 2.08165e-12, 2.08165e-12)
@@ -981,6 +998,7 @@ shape = SubResource("BoxShape3D_o7hic")
 
 [node name="StaticBody3D10" type="StaticBody3D" parent="Platforms"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 4.96933, -1.89338, 20.5061)
+collision_layer = 256
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StaticBody3D10"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 2.08165e-12, 2.08165e-12, 2.08165e-12)
@@ -1022,7 +1040,7 @@ shape = SubResource("SphereShape3D_mwnmw")
 
 [node name="Berry3" type="Area3D" parent="Collectables"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -43.9587, -14.4101, 4.41069)
-collision_layer = 0
+collision_layer = 2
 script = ExtResource("7_sirq3")
 
 [node name="Strawberry" parent="Collectables/Berry3" instance=ExtResource("6_thhmb")]
@@ -1037,7 +1055,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.566, -16.2306, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Final Platform"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 46.7424, -16.4202, 3.40872)
-collision_layer = 4
+collision_layer = 256
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Final Platform/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.0894, 17.1238, -3.31965)
@@ -1054,8 +1072,8 @@ metadata/_edit_lock_ = true
 
 [node name="Rock1" type="RigidBody3D" parent="Rocks (FR)"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.67064, -3.25107, 0)
-collision_layer = 16
-collision_mask = 5
+collision_layer = 20
+collision_mask = 261
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Rocks (FR)/Rock1"]
 mesh = SubResource("SphereMesh_goswu")
@@ -1066,7 +1084,7 @@ shape = SubResource("SphereShape3D_lgx66")
 [node name="Rock2" type="RigidBody3D" parent="Rocks (FR)"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.4532, -3.449, -5.81537)
 collision_layer = 16
-collision_mask = 5
+collision_mask = 257
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Rocks (FR)/Rock2"]
 mesh = SubResource("SphereMesh_goswu")
@@ -1077,7 +1095,7 @@ shape = SubResource("SphereShape3D_lgx66")
 [node name="Rock3" type="RigidBody3D" parent="Rocks (FR)"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.2458, -3.36544, 10.5168)
 collision_layer = 16
-collision_mask = 5
+collision_mask = 257
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Rocks (FR)/Rock3"]
 mesh = SubResource("SphereMesh_goswu")
@@ -1088,7 +1106,7 @@ shape = SubResource("SphereShape3D_lgx66")
 [node name="Rock4" type="RigidBody3D" parent="Rocks (FR)"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5031, -3.36055, -4.29435)
 collision_layer = 16
-collision_mask = 5
+collision_mask = 257
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Rocks (FR)/Rock4"]
 mesh = SubResource("SphereMesh_goswu")
@@ -1099,7 +1117,7 @@ shape = SubResource("SphereShape3D_lgx66")
 [node name="Rock5" type="RigidBody3D" parent="Rocks (FR)"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.2636, -3.2411, 5.69649)
 collision_layer = 16
-collision_mask = 5
+collision_mask = 257
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Rocks (FR)/Rock5"]
 mesh = SubResource("SphereMesh_goswu")
@@ -1110,7 +1128,7 @@ shape = SubResource("SphereShape3D_lgx66")
 [node name="Rock6" type="RigidBody3D" parent="Rocks (FR)"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.445, -3.4887, -10.6658)
 collision_layer = 16
-collision_mask = 5
+collision_mask = 257
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Rocks (FR)/Rock6"]
 mesh = SubResource("SphereMesh_goswu")
@@ -1121,7 +1139,7 @@ shape = SubResource("SphereShape3D_lgx66")
 [node name="Rock7" type="RigidBody3D" parent="Rocks (FR)"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -137.341, -3.15571, 2.95756)
 collision_layer = 16
-collision_mask = 5
+collision_mask = 257
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Rocks (FR)/Rock7"]
 mesh = SubResource("SphereMesh_goswu")
@@ -1132,7 +1150,7 @@ shape = SubResource("SphereShape3D_lgx66")
 [node name="Rock8" type="RigidBody3D" parent="Rocks (FR)"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2838, -17.9327, -7.61702)
 collision_layer = 16
-collision_mask = 5
+collision_mask = 257
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Rocks (FR)/Rock8"]
 mesh = SubResource("SphereMesh_goswu")
@@ -1143,7 +1161,7 @@ shape = SubResource("SphereShape3D_lgx66")
 [node name="Rock9" type="RigidBody3D" parent="Rocks (FR)"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1747, -2.71814, 10.6961)
 collision_layer = 16
-collision_mask = 5
+collision_mask = 257
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Rocks (FR)/Rock9"]
 mesh = SubResource("SphereMesh_goswu")
@@ -1168,9 +1186,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5869, 0, 0)
 mesh = SubResource("BoxMesh_pg8sk")
 surface_material_override/0 = SubResource("StandardMaterial3D_r5cu1")
 
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="HUD" instance=ExtResource("10_7h331")]
+mouse_filter = 2
+mouse_default_cursor_shape = 3
+script = ExtResource("11_vtk7a")
+
+[connection signal="update_console" from="Player/Camera/Pickup Area" to="HUD/HUD" method="_on_pickup_area_update_console"]
 [connection signal="body_entered" from="Respawn Barrier" to="Respawn Barrier" method="_on_body_entered"]
 [connection signal="body_entered" from="Collectables/Berry" to="Collectables/Berry" method="_on_body_entered"]
+[connection signal="item_collected" from="Collectables/Berry" to="HUD/HUD" method="_on_berry_item_collected"]
 [connection signal="body_entered" from="Collectables/Berry2" to="Collectables/Berry2" method="_on_body_entered"]
+[connection signal="item_collected" from="Collectables/Berry2" to="HUD/HUD" method="_on_berry_item_collected"]
 [connection signal="body_entered" from="Collectables/Berry3" to="Collectables/Berry3" method="_on_body_entered"]
+[connection signal="item_collected" from="Collectables/Berry3" to="HUD/HUD" method="_on_berry_item_collected"]
 [connection signal="body_entered" from="Next Level Area" to="Next Level Area" method="_on_body_entered"]
 [connection signal="body_exited" from="Next Level Area" to="Next Level Area" method="_on_body_exited"]
+[connection signal="update_console" from="Next Level Area" to="HUD/HUD" method="_on_next_level_area_update_console"]
+
+[editable path="Player"]

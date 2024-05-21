@@ -31,6 +31,7 @@ var jump_max = 2
 var jump_count = 0
 
 @onready var camera: Camera3D = $Camera
+@onready var Grapple = $Camera/Grapple
 
 
 func _ready() -> void:
@@ -97,7 +98,6 @@ func _jump(delta: float) -> Vector3:
 	jump_vel = Vector3.ZERO if is_on_floor() else jump_vel.move_toward(Vector3.ZERO, gravity * delta)
 	return jump_vel
 	
-
 	
 	
 	#OH MY GOD I DID IT I DID IT HOLY SHIT
